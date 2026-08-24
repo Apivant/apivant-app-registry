@@ -88,6 +88,37 @@ describe("createAppRegistry", () => {
   });
 });
 
+describe("APP_HOME", () => {
+  // The package exists so a URL change lands in ONE place. That only helps if
+  // the URLs in it are the canonical ones - and the first bug found after
+  // extraction was a Services Builder tile still pointing at the retired
+  // servicebuilder.replit.app, which answers 200 with the pre-migration app.
+  // A dead host would have been caught by anyone clicking it; a live-but-wrong
+  // host is invisible. So: every app is reachable at an apivant.io name, and
+  // no entry may point at a PaaS default domain.
+  it("addresses every app by its apivant.io domain", () => {
+    for (const id of ALL_APPS) {
+      expect(new URL(APP_HOME[id]).hostname.endsWith(".apivant.io")).toBe(true);
+    }
+  });
+
+  it("points at no PaaS default domain", () => {
+    const paasHosts = [".replit.app", ".onrender.com", ".vercel.app", ".netlify.app"];
+    for (const id of ALL_APPS) {
+      const host = new URL(APP_HOME[id]).hostname;
+      for (const bad of paasHosts) {
+        expect(host.endsWith(bad), `${id} points at ${host}`).toBe(false);
+      }
+    }
+  });
+
+  it("uses https everywhere", () => {
+    for (const id of ALL_APPS) {
+      expect(new URL(APP_HOME[id]).protocol).toBe("https:");
+    }
+  });
+});
+
 describe("appLinkBehavior", () => {
   it("maps kind to how the tile renders", () => {
     const { APP_ENTRIES } = createAppRegistry({ activeAppId: "vantsign" });

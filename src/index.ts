@@ -53,7 +53,11 @@ export interface AppEntry<TUser = unknown> {
  *  /sign/:token (the public tokenized signer plane, which has no session). */
 export const APP_HOME: Record<AppId, string> = {
   fulcrum: "https://fulcrum.apivant.io",
-  "services-builder": "https://servicebuilder.replit.app",
+  // Custom domain, NOT the servicebuilder.replit.app address this used to
+  // carry: Services Builder moved to Render, and the Replit deployment still
+  // answers 200 with the pre-migration app. A stale-but-live URL is the worst
+  // kind - nothing 404s, the rail just quietly lands everyone on a zombie.
+  "services-builder": "https://servicebuilder.apivant.io",
   vantsign: "https://vantsign.apivant.io/app",
   vantage: "https://vantage.apivant.io",
 };
