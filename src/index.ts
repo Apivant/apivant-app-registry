@@ -12,10 +12,10 @@
 // which entry is the active app and what local path its own tile points at.
 // createAppRegistry() takes both and returns the same API surface each app
 // already used, so a consumer swaps its local file for one call.
-import { Handshake, ShieldCheck, Signature, Wrench, type LucideIcon } from "lucide-react";
+import { Handshake, ShieldCheck, Signature, UserSearch, Wrench, type LucideIcon } from "lucide-react";
 
 /** Every app in the family. Adding one starts here. */
-export type AppId = "fulcrum" | "services-builder" | "vantsign" | "vantage";
+export type AppId = "fulcrum" | "services-builder" | "vantsign" | "vantage" | "staffing-portal";
 
 // How an app entry gets rendered by AppRail / a mobile drawer's app-switcher
 // section. "internal" is a same-app route (the app you're standing in);
@@ -60,6 +60,9 @@ export const APP_HOME: Record<AppId, string> = {
   "services-builder": "https://servicebuilder.apivant.io",
   vantsign: "https://vantsign.apivant.io/app",
   vantage: "https://vantage.apivant.io",
+  // Staff surface only. The portal's /partner/* plane is for external agency
+  // recruiters and never renders the family rail - this URL is where STAFF land.
+  "staffing-portal": "https://staffing.apivant.io",
 };
 
 /** Canonical rail order, identical in every app so the switcher looks the
@@ -69,6 +72,7 @@ const CATALOG: { id: AppId; name: string; icon: LucideIcon }[] = [
   { id: "services-builder", name: "Services Builder", icon: Wrench },
   { id: "vantsign", name: "VantSign", icon: Signature },
   { id: "vantage", name: "Vantage", icon: Handshake },
+  { id: "staffing-portal", name: "Staffing Portal", icon: UserSearch },
 ];
 
 export interface AppRegistryOptions {

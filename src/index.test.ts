@@ -7,7 +7,7 @@ import {
   type AppId,
 } from "./index";
 
-const ALL_APPS: AppId[] = ["fulcrum", "services-builder", "vantsign", "vantage"];
+const ALL_APPS: AppId[] = ["fulcrum", "services-builder", "vantsign", "vantage", "staffing-portal"];
 
 describe("createAppRegistry", () => {
   it("marks exactly one entry internal - the active app", () => {
