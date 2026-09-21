@@ -18,7 +18,7 @@ The only genuine per-app differences were *which* entry is the current app and
 ## Use
 
 ```bash
-npm install "git+https://github.com/Apivant/apivant-app-registry.git#v1.0.0"
+npm install "git+https://github.com/Apivant/apivant-app-registry.git#v1.1.0"
 ```
 
 ```ts
@@ -58,6 +58,7 @@ today; `checkAccess` is the extension point for per-app entitlements.
 | Services Builder | `client/src/lib/appRegistry.ts` |
 | Vantage | `client/src/components/layout/appRegistry.ts` |
 | Fulcrum | `client/src/components/Layout/appRegistry.ts` - **not yet migrated**; its rail work was still on an unmerged branch when this package was extracted. |
+| Forum | `client/src/components/layout/appRegistry.ts` |
 
 Consumers pin a tag. Bumping one is a deliberate act per app, so a URL change
 can't surprise a deployment mid-release.
