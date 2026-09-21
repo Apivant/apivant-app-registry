@@ -1,7 +1,7 @@
 {
   "name": "@apivant/app-registry",
-  "version": "1.0.2",
-  "description": "Shared app-switcher registry for the Apivant family apps (Fulcrum, Services Builder, VantSign, Vantage, Staffing Portal).",
+  "version": "1.1.0",
+  "description": "Shared app-switcher registry for the Apivant family apps (Fulcrum, Services Builder, VantSign, Vantage, Staffing Portal, Forum).",
   "license": "UNLICENSED",
   "private": false,
   "type": "module",
